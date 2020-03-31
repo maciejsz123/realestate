@@ -8,7 +8,7 @@ class HousesMap extends Component {
     const position = [51.1078852, 17.0385376]
     const icon = new Icon({
       iconUrl: require('../imgs/greendot.png'),
-      iconSize: [13, 13],
+      iconSize: [13, 13]
     })
 
     const markers = this.props.houses.map( (house, i) => (
