@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap")
+
+$color1: #b99379
+$color3: #02313b
+$color4: #f4f4f4
+$color5: #b99379
+$color6: #b99379
+$color7: #f2f2f2
+
+$blue1: #6e99d4
+$blue2: #006AFF
+$blue3: #61a3ff
+$blue4: #3087ff
+$blue5: #4895e8
+$blue6: #4895e8
+$blue7: #bdbdbd
+
+body
+  margin: 0
+  padding: 0
+
+ol, ul
+	list-style: none
+
+a
+  text-decoration: none
+
+.dropdown-toggle[aria-expanded=true]:after
+  transform: rotate(180deg)
+  transition: 0.33s
+
+.dropdown-toggle[aria-expanded=false]:after
+  transform: rotate(0deg)
+  transition: 0.33s
+
+.imageDetails
+  top: 0
+  display: grid
+  grid-template-columns: 30% auto
+  grid-template-rows: repeat(4, 20%)
+  align-items: center
+  width: calc(100% - 30px)
+  z-index: 1
+  color: transparent
+  font-size: 0.85rem !important
+  font-family: 'poppins', sans-serif
+  color: white
+  .detailsHide
+    transition: 0.23s
+    opacity: 1
+
+.detailsHide
+  opacity: 0
+  transition: 0.23s
+
+.imgIcon
+  width: 1.3rem
+  height: 1.3rem
+
+.faceImg
+  grid-row: 1/6
+  align-self: start
+  margin: 20% 0 0 20%
+  width: 4rem
+  height: 4rem
+  border-radius: 50%
+
+.imageDetails + .backgroundImage
+  background: $color3
+  opacity: 0.85
+
+.backgroundImage
+  top: 0
+  width: calc(100% - 30px)
+  transition: 0.23s
+  &:hover
+    background: black
+    opacity: 0.7
+
+.imgDescription
+  text-align: center
+  top: 72%
+  z-index: -1
+  left: 10%
+  width: 80%
+  height: 20%
+  border-radius: 0 0 10px 10px
+  background: $color4
+  color: $color3
+  box-shadow: 3px 3px 3px grey
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: center
+  transition: all 0.5s
+  &>div
+    display: flex
+    align-content: center
+    justify-content: center
+    &>p
+      margin: auto
+
+.houseItem > .imgDescription
+  transition: all 0.5s
+  color: black
+  top: 75%
+
+.noUserSelection
+  user-select: none
+
+.dropdown-menu
+  width: 100%
+
+.dropdown-button
+  width: 100%
+  background: $color3
+  border-radius: 0 0 3px 3px
+  text-align: center
+  button
+    color: $color3
+    background: $color4
+    &:hover
+      color: $color5
+
+.bedsButtons
+  border: 1px solid grey
+  transition: 0.23s
+  cursor: pointer
+  &:hover
+    background: $color5
+    color: white
+
+.bedsActive
+  background: $color6
+  color: white
+
+.bedsButtons:nth-of-type(1)
+  border-radius: 5px 0 0 5px
+
+.bedsButtons:nth-last-of-type(1)
+  border-radius:  0 5px 5px 0
+
+.actualPage
+  background-color: $blue6
+  color: white
+  &:hover
+    background: $blue6
+    color: white
+
+.hideOnSmall
+  display: none
+
+.hamburger
+  display: block
+  z-index: 3
+  position: absolute
+  left: 5px
+  top: 5px
+  cursor: pointer
+  padding: 20px
+  margin: 5px
+  & > *
+    width: 35px
+    height: 5px
+    background: white
+    border: 0.5px solid #bdbdbd
+    margin: 5px
+    border-radius: 3px
+    transition: transform 0.33s
+
+.hamburgerActiveDisplay
+  display: flex !important
+
+.clickedHamburger
+  & > div:nth-child(1)
+    transform: rotate(45deg) translate(20%)
+  & > div:nth-child(2)
+    display: none
+  & > div:nth-child(3)
+    transform: rotate(-45deg) translate(20%)
+
+.searchClear
+  position: absolute
+  right: 10px
+  top: 6px
+  cursor: pointer
+  background: white
+
+@media only screen and (min-width: '768px')
+  .moveLeft
+    left: calc(-140px + 30%)
+  .hideOnSmall
+    display: flex
+  .hamburger
+    display: none
+
+  .imageDetails
+    color: transparent
+    .detailsHide
+      transition: 0.23s
+      opacity: 0
+    &:hover
+      color: white
+      .detailsHide
+        transition: 0.23s
+        opacity: 1
+
+  .imageDetails + .backgroundImage
+    background: transparent
+    opacity: 0.85
+
+  .imageDetails:hover + .backgroundImage
+    background: $color3
+    opacity: 0.85
+
+  .houseItem > .imgDescription
+    transition: all 0.5s
+    color: black
+    top: 70%
+
+  .houseItem:hover > .imgDescription
+    transition: all 0.5s
+    color: $color6
+    top: 75%
