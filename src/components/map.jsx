@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Map, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
-import L, { Icon } from 'leaflet';
+import { Icon } from 'leaflet';
 import { connect } from 'react-redux';
 
 class HousesMap extends Component {
@@ -32,13 +32,13 @@ class HousesMap extends Component {
 
     const markers = this.props.houses.map( (house, i) => (
       <Marker icon={icon} key={i} position={[house.latitude, house.longitude]}>
-        <Tooltip>s</Tooltip>
+        <Tooltip>data</Tooltip>
       </Marker>
       )
     );
     const markers2 = this.state.hoverMarker.map( (item, i) => (
       <Marker icon={icon} key={i} position={item}>
-        <Popup onOpen={() => console.log('dd')}>sasdf</Popup>
+        <Tooltip permanent>sasdf</Tooltip>
       </Marker>
       )
     );
