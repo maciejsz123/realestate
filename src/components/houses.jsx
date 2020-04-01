@@ -37,27 +37,13 @@ class Houses extends Component {
     let typesValues = types.map( i => i.value);
 
     const filtered = this.props.houses.filter( (house, i) => {
-      if(house.city.toLowerCase().includes(this.props.city.toLowerCase()) &&
+      return (house.city.toLowerCase().includes(this.props.city.toLowerCase()) &&
           house.price > priceFrom &&
           house.price < priceTo &&
           house.surface > surfaceFrom &&
           house.surface < surfaceTo &&
           (!this.props.beds || house.beds === this.props.beds) &&
-          typesValues.includes(house.type)) {
-        return <HouseItem
-          city={house.city}
-          street={house.street}
-          price={house.price}
-          image={house.img}
-          faceImg={house.faceImg}
-          userName={house.userName}
-          surface={house.surface}
-          beds={house.beds}
-          key={i}
-        />;
-      } else {
-        return ''
-      }
+          typesValues.includes(house.type))
     });
 
     const houses = filtered.map( (house, i) => {
@@ -72,6 +58,8 @@ class Houses extends Component {
           userName={house.userName}
           image={house.img}
           faceImg={house.faceImg}
+          latitude={house.latitude}
+          longitude={house.longitude}
         />;
       } else {
         return '';
@@ -101,7 +89,9 @@ const mapStateToProps = (state) => {
     surfaceFrom: state.houses.surfaceFrom,
     surfaceTo: state.houses.surfaceTo,
     beds: state.houses.beds,
-    homeType: state.houses.homeType
+    homeType: state.houses.homeType,
+    latitude: state.houses.latitude,
+    longitude: state.houses.longitude
   }
 };
 

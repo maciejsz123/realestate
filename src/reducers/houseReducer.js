@@ -1,4 +1,4 @@
-import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE} from '../actions/types';
+import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP } from '../actions/types';
 import room1 from '../imgs/room1.jpg';
 import room2 from '../imgs/room2.jpg';
 import room3 from '../imgs/room3.jpg';
@@ -15,6 +15,7 @@ const initialState = {
   surfaceFrom: '',
   surfaceTo: '',
   beds: '',
+  hoveredTooltip: [],
   homeType: [
     {value: 'house', checked: true},
     {value: 'manufactured', checked: true},
@@ -167,6 +168,9 @@ export default function(state = initialState, action) {
 
     case REMOVE_VALUE:
       return {...state, [action.payload]: action.value}
+
+    case MOUSEOVER_TOOLTIP_MAP:
+      return {...state, hoveredTooltip: action.payload}
 
     default:
       return state;

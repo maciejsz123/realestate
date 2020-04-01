@@ -1,4 +1,4 @@
-import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE } from './types';
+import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP } from './types';
 
 export function changeOptions(e) {
   return function(dispatch) {
@@ -23,6 +23,15 @@ export function removeValue(e) {
       type: REMOVE_VALUE,
       payload: e.target.name,
       value: ''
+    })
+  }
+}
+
+export function mouseOverTooltipData(e, latitude = '', longitude = '') {
+  return function(dispatch) {
+    dispatch({
+      type: MOUSEOVER_TOOLTIP_MAP,
+      payload: (latitude && longitude) ? [[latitude, longitude]] : []
     })
   }
 }

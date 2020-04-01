@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import surface from '../imgs/surface.png';
 import bed from '../imgs/bed.png';
+import { connect } from 'react-redux';
+import { mouseOverTooltipData } from '../actions/optionsAction';
 
-function formatPrice(value) {
+export function formatPrice(value) {
   value = Number(value);
   if(isNaN(value)) {
     return 'nan'
@@ -20,7 +22,7 @@ function formatPrice(value) {
 
 function HouseItem(props) {
   return(
-    <div className='col-md-6 col-lg-4 position-relative houseItem'>
+    <div className='col-md-6 col-lg-4 position-relative houseItem' onMouseEnter={(e) => props.mouseOverTooltipData(e, props.latitude, props.longitude)} onMouseLeave={(e) => props.mouseOverTooltipData(e)}>
       <img src={props.image} alt={props.city} className='w-100 h-75'/>
       <div className='h-75 position-absolute imageDetails'>
         <img src={props.faceImg} alt='face' className='faceImg detailsHide' />
@@ -40,4 +42,9 @@ function HouseItem(props) {
   )
 }
 
-export default HouseItem;
+
+const mapStateToProps = (state) => {
+  return { }
+}
+
+export default connect(mapStateToProps, { mouseOverTooltipData })(HouseItem);
