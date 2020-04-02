@@ -8,7 +8,7 @@ class Houses extends Component {
   constructor() {
     super();
     this.state = {
-      itemsPerPage: 8,
+      itemsPerPage: 6,
       actualPage: 1,
       previousNumberOfItem: ''
     }

@@ -15,7 +15,17 @@ class HousesMap extends Component {
 
     const markers = this.props.houses.map( (house, i) => (
       <Marker icon={icon} key={i} position={[house.latitude, house.longitude]}>
-        <Tooltip>data</Tooltip>
+        <Tooltip>
+          <div style={{display: 'flex'}}>
+            <div>
+              <img src={house.img} style={{width: '75px', height: '75px'}}/>
+            </div>
+            <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
+              <span>{formatPrice(house.price)} zł</span>
+              <span>{house.surface} m<sup>2</sup></span>
+            </div>
+          </div>
+        </Tooltip>
       </Marker>
       )
     );
