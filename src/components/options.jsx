@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeOptions, removeValue } from '../actions/optionsAction';
+import { changeOptions, removeValue, filterHouses, changePage } from '../actions/optionsAction';
 import remove from '../imgs/remove.png';
 
 class Options extends Component{
@@ -39,6 +39,8 @@ class Options extends Component{
     } else if (e.target.name === 'homeType' || e.target.name === 'city'){
       this.props.changeOptions(e);
     }
+    this.props.changePage(1);
+    this.props.filterHouses(this.props);
   }
 
   titleDetail(element, from, to, unit, name) {
@@ -219,8 +221,9 @@ const mapStateToProps = (state) => {
     surfaceFrom: state.houses.surfaceFrom,
     surfaceTo: state.houses.surfaceTo,
     beds: state.houses.beds,
-    homeType: state.houses.homeType
+    homeType: state.houses.homeType,
+    houses: state.houses.houses
   }
 }
 
-export default connect(mapStateToProps, { changeOptions, removeValue })(Options);
+export default connect(mapStateToProps, { changeOptions, removeValue, filterHouses, changePage })(Options);

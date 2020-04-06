@@ -18,7 +18,7 @@ class HousesMap extends Component {
         <Tooltip>
           <div style={{display: 'flex'}}>
             <div>
-              <img src={house.img} style={{width: '75px', height: '75px'}}/>
+              <img alt={i} src={house.img} style={{width: '75px', height: '75px'}}/>
             </div>
             <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
               <span>{formatPrice(house.price)} zł</span>
@@ -41,7 +41,7 @@ class HousesMap extends Component {
         <Tooltip permanent>
           <div style={{display: 'flex'}}>
             <div>
-              <img src={item.img} style={{width: '75px', height: '75px'}}/>
+              <img alt={i} src={item.img} style={{width: '75px', height: '75px'}}/>
             </div>
             <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
               <span>{formatPrice(item.price)} zł</span>

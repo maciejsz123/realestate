@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import surface from '../imgs/surface.png';
 import bed from '../imgs/bed.png';
 import { connect } from 'react-redux';
