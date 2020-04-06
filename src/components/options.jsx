@@ -26,7 +26,7 @@ class Options extends Component{
     });
   }
 
-  onChange(e) {
+  async onChange(e) {
     let isNumber = !isNaN(Number(e.target.value));
     if(isNumber && (e.target.name === 'surfaceFrom' || e.target.name === 'surfaceTo' || e.target.name === 'priceFrom' || e.target.name === 'priceTo')) {
       this.props.changeOptions(e);
@@ -39,8 +39,8 @@ class Options extends Component{
     } else if (e.target.name === 'homeType' || e.target.name === 'city'){
       this.props.changeOptions(e);
     }
-    this.props.changePage(1);
-    this.props.filterHouses(this.props);
+    await this.props.changePage(1);
+    await this.props.filterHouses(this.props);
   }
 
   titleDetail(element, from, to, unit, name) {
