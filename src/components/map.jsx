@@ -3,8 +3,18 @@ import { Map, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import { connect } from 'react-redux';
 import { formatPrice } from './houseItem.jsx';
+import { setVisibleArea, filterHouses } from '../actions/optionsAction.js';
 
 class HousesMap extends Component {
+
+  componentDidMount() {
+    this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
+  }
+
+  async mapMove() {
+    await this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
+    await this.props.filterHouses(this.props);
+  }
 
   render() {
     const position = [52.0694137, 19.4777549]
@@ -54,7 +64,7 @@ class HousesMap extends Component {
     )) : '';
 
     return(
-      <Map center={position} zoom={6} style={{width: '100%', height: '100vh'}}>
+      <Map ref='map' onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} style={{width: '100%', height: '100vh'}}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"
@@ -71,8 +81,19 @@ class HousesMap extends Component {
 const mapStateToProps = (state) => {
   return {
     houses: state.houses.houses,
-    hoveredTooltip: state.houses.hoveredTooltip
+    hoveredTooltip: state.houses.hoveredTooltip,
+    city: state.houses.city,
+    priceFrom: state.houses.priceFrom,
+    priceTo: state.houses.priceTo,
+    surfaceFrom: state.houses.surfaceFrom,
+    surfaceTo: state.houses.surfaceTo,
+    beds: state.houses.beds,
+    homeType: state.houses.homeType,
+    actualPage: state.houses.actualPage,
+    filteredHouses: state.houses.filteredHouses,
+    northEast: state.houses.northEast,
+    southWest: state.houses.southWest
   }
 };
 
-export default connect(mapStateToProps)(HousesMap);
+export default connect(mapStateToProps, { setVisibleArea, filterHouses })(HousesMap);

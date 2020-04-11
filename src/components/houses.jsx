@@ -14,8 +14,8 @@ class Houses extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.filterHouses(this.props);
+ componentDidMount() {
+   this.props.filterHouses(this.props);
   }
 
   onPageChange(e) {
@@ -73,10 +73,10 @@ const mapStateToProps = (state) => {
     surfaceTo: state.houses.surfaceTo,
     beds: state.houses.beds,
     homeType: state.houses.homeType,
-    latitude: state.houses.latitude,
-    longitude: state.houses.longitude,
     actualPage: state.houses.actualPage,
-    filteredHouses: state.houses.filteredHouses
+    filteredHouses: state.houses.filteredHouses,
+    northEast: state.houses.northEast,
+    southWest: state.houses.southWest
   }
 };
 

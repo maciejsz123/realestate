@@ -1,4 +1,4 @@
-import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE } from '../actions/types';
+import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE, SET_VISIBLE_AREA } from '../actions/types';
 import room1 from '../imgs/room1.jpg';
 import room2 from '../imgs/room2.jpg';
 import room3 from '../imgs/room3.jpg';
@@ -17,6 +17,8 @@ const initialState = {
   beds: '',
   hoveredTooltip: [],
   filteredHouses: [],
+  northEast: {lat: 180, lng: 180},
+  southWest: {lat: 0, lng: 0},
   actualPage: 1,
   homeType: [
     {value: 'house', checked: true},
@@ -179,6 +181,9 @@ export default function(state = initialState, action) {
 
     case CHANGE_PAGE:
       return {...state, actualPage: action.payload}
+
+    case SET_VISIBLE_AREA:
+      return {...state, southWest: action.southWest, northEast: action.northEast}
 
     default:
       return state;

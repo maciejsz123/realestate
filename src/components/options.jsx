@@ -222,7 +222,9 @@ const mapStateToProps = (state) => {
     surfaceTo: state.houses.surfaceTo,
     beds: state.houses.beds,
     homeType: state.houses.homeType,
-    houses: state.houses.houses
+    houses: state.houses.houses,
+    northEast: state.houses.northEast,
+    southWest: state.houses.southWest
   }
 }
 
