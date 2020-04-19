@@ -8,12 +8,18 @@ import { setVisibleArea, filterHouses } from '../actions/optionsAction.js';
 class HousesMap extends Component {
 
   componentDidMount() {
-    this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
+    if(this.refs.map.leafletElement.getBounds()._northEast.lat !== this.refs.map.leafletElement.getBounds()._southWest.lat &&
+      this.refs.map.leafletElement.getBounds()._northEast.lng !== this.refs.map.leafletElement.getBounds()._southWest.lng) {
+        this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
+      }
   }
 
   async mapMove() {
-    await this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
-    await this.props.filterHouses(this.props);
+    if(this.refs.map.leafletElement.getBounds()._northEast.lat !== this.refs.map.leafletElement.getBounds()._southWest.lat &&
+      this.refs.map.leafletElement.getBounds()._northEast.lng !== this.refs.map.leafletElement.getBounds()._southWest.lng) {
+        await this.props.setVisibleArea(this.refs.map.leafletElement.getBounds()._northEast, this.refs.map.leafletElement.getBounds()._southWest);
+        await this.props.filterHouses(this.props);
+      }
   }
 
   render() {
@@ -23,7 +29,7 @@ class HousesMap extends Component {
       iconSize: [13, 13]
     })
 
-    const markers = this.props.houses.map( (house, i) => (
+    const markers = this.props.filteredHouses.map( (house, i) => (
       <Marker icon={icon} key={i} position={[house.latitude, house.longitude]}>
         <Tooltip>
           <div style={{display: 'flex'}}>
@@ -40,7 +46,7 @@ class HousesMap extends Component {
       )
     );
 
-    const hoveredHouse = this.props.houses.filter( house => {
+    const hoveredHouse = this.props.filteredHouses.filter( house => {
       return this.props.hoveredTooltip[0] ?
        house.latitude === this.props.hoveredTooltip[0][0] && house.longitude === this.props.hoveredTooltip[0][1] :
        false;
@@ -64,7 +70,7 @@ class HousesMap extends Component {
     )) : '';
 
     return(
-      <Map ref='map' onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} style={{width: '100%', height: '100vh'}}>
+      <Map ref='map' onResize={this.mapMove.bind(this)} onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} className='mapSize'>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"

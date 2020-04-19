@@ -29,6 +29,7 @@ const initialState = {
   ],
   houses: [
     {
+      id: 1,
       city: 'Warszawa',
       street: 'Rynek 45',
       price: 50000,
@@ -41,6 +42,7 @@ const initialState = {
       latitude: '52.2330653',
       longitude: '20.9211107'
     }, {
+      id: 2,
       city: 'Wrocław',
       street: 'Nowa 1',
       price: 12003400,
@@ -53,6 +55,7 @@ const initialState = {
       latitude: '51.105385',
       longitude: '17.0367105'
     }, {
+      id: 3,
       city: 'Poznań',
       street: 'Wrocławska 54',
       price: 320000,
@@ -65,6 +68,7 @@ const initialState = {
       latitude: '52.405704',
       longitude: '16.9307877'
     }, {
+      id: 4,
       city: 'Kraków',
       street: 'Rynek 15',
       price: 30000,
@@ -77,6 +81,7 @@ const initialState = {
       latitude: '50.0641377',
       longitude: '19.9342954'
     }, {
+      id: 5,
       city: 'Kraków',
       street: 'Rynek 25',
       price: 35000,
@@ -89,6 +94,7 @@ const initialState = {
       latitude: '50.0611732',
       longitude: '19.9335751'
     }, {
+      id: 6,
       city: 'Poznań',
       street: 'Rynek 54',
       price: 540000,
@@ -101,6 +107,7 @@ const initialState = {
       latitude: '52.4081478',
       longitude: '16.9314839'
     }, {
+      id: 7,
       city: 'Wrocław',
       street: 'Rynek 5/5',
       price: 300000,
@@ -113,6 +120,7 @@ const initialState = {
       latitude: '51.1105238',
       longitude: '17.028247'
     }, {
+      id: 8,
       city: 'Warszawa',
       street: 'Rynek 54',
       price: 300000,
@@ -125,6 +133,7 @@ const initialState = {
       latitude: '52.2497446',
       longitude: '21.010053'
     }, {
+      id: 9,
       city: 'Wrocław',
       street: 'Nadrzeczna 5',
       price: 370000,
@@ -137,6 +146,7 @@ const initialState = {
       latitude: '51.1451689',
       longitude: '16.9313011'
     }, {
+      id: 10,
       city: 'Kraków',
       street: 'Celna 3',
       price: 450000,

@@ -99,6 +99,7 @@ class Options extends Component{
 
   async onRemove(e, name) {
     await this.props.removeValue(e);
+    await this.props.filterHouses(this.props);
     this.changeTitle(name);
   }
 

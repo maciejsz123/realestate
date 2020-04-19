@@ -10,7 +10,10 @@ class Houses extends Component {
     super();
     this.state = {
       itemsPerPage: 6,
-      previousNumberOfItem: ''
+      previousNumberOfItem: '',
+      sortingOption: 'iddsc',
+      sortingByData: 'id',
+      sortingDirection: 'dsc'
     }
   }
 
@@ -28,8 +31,22 @@ class Houses extends Component {
     }
   }
 
+  changeOption(e) {
+    this.setState({
+      sortingOption: e.target.value,
+      sortingByData: e.target.value.substring(0, e.target.value.length - 3),
+      sortingDirection: e.target.value.substring(e.target.value.length - 3)
+    })
+  }
+
   render() {
-    const houses = this.props.filteredHouses.map( (house, i) => {
+    let houses = this.props.filteredHouses.sort( (a,b) => {
+      if(this.state.sortingDirection === 'asc') {
+        return a[this.state.sortingByData] > b[this.state.sortingByData]
+      } else {
+        return a[this.state.sortingByData] < b[this.state.sortingByData]
+      }
+    }).map( (house, i) => {
       if(i >= (this.props.actualPage - 1) * this.state.itemsPerPage && i <= this.props.actualPage * this.state.itemsPerPage - 1) {
         return <HouseItem
           city={house.city}
@@ -44,15 +61,24 @@ class Houses extends Component {
           latitude={house.latitude}
           longitude={house.longitude}
         />;
-      } else {
-        return '';
       }
-
     });
+
     return(
-      <div className='row'>
-        <div className='col-12 p-2 text-center color-grey'>
+      <div className='row' style={{margin: '0px 0px'}}>
+        <div className='col-12 text-center color-grey'>
           <FindHouseInfo items={this.props.filteredHouses.length} />
+        </div>
+        <div className='col-12 pb-2 text-center'>
+          <span>sort by: </span>
+          <select value={this.state.sortingOption} onChange={this.changeOption.bind(this)}>
+            <option value='iddsc'>Newest</option>
+            <option value='pricedsc'>Price [High to Low]</option>
+            <option value='priceasc'>Price [Low to High]</option>
+            <option value='surfacedsc'>surface [High to Low]</option>
+            <option value='surfaceasc'>surface [Low to High]</option>
+            <option value='bedsdsc'>number of bedroom</option>
+          </select>
         </div>
         {houses}
         <div className='col-md-12'>

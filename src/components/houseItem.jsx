@@ -22,7 +22,7 @@ export function formatPrice(value) {
 
 function HouseItem(props) {
   return(
-    <div className='col-md-6 col-lg-4 position-relative houseItem' onMouseEnter={(e) => props.mouseOverTooltipData(e, props.latitude, props.longitude)} onMouseLeave={(e) => props.mouseOverTooltipData(e)}>
+    <div className='col-md-6 position-relative houseItem' onMouseEnter={(e) => props.mouseOverTooltipData(e, props.latitude, props.longitude)} onMouseLeave={(e) => props.mouseOverTooltipData(e)}>
       <img src={props.image} alt={props.city} className='w-100 h-75'/>
       <div className='h-75 position-absolute imageDetails'>
         <img src={props.faceImg} alt='face' className='faceImg detailsHide' />

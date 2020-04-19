@@ -30,6 +30,14 @@ a
 
 #fullView
   display: block
+  & > img
+    position: fixed
+    bottom: 25px
+    left: 25px
+    z-index: 999
+    width: 35px
+    height: 35px
+    cursor: pointer
 
 .dropdown-toggle[aria-expanded=true]:after
   transform: rotate(180deg)
@@ -190,6 +198,10 @@ a
   top: 6px
   cursor: pointer
   background: white
+
+.mapSize
+  width: 100%
+  height: calc(100vh - 45px)
 
 @media only screen and (min-width: '1024px')
   #fullView
