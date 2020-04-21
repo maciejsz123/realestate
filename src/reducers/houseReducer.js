@@ -158,6 +158,45 @@ const initialState = {
       type: 'multi-family',
       latitude: '50.044654',
       longitude: '19.9456087'
+    }, {
+      id: 11,
+      city: 'Gdańsk',
+      street: 'Fabryczna 33',
+      price: 285000,
+      surface: 35,
+      beds: '2',
+      img: room2,
+      faceImg: face3,
+      userName: 'Krzysztof Nowak',
+      type: 'manufactured',
+      latitude: '54.3552534',
+      longitude: '18.4919756'
+    }, {
+      id: 12,
+      city: 'Łódź',
+      street: 'Poznańska 23',
+      price: 320000,
+      surface: 37,
+      beds: '2',
+      img: room1,
+      faceImg: face1,
+      userName: 'Krzysztof Kowalski',
+      type: 'manufactured',
+      latitude: '51.7430138',
+      longitude: '19.480958'
+    }, {
+      id: 13,
+      city: 'Radom',
+      street: 'Górna 2',
+      price: 275000,
+      surface: 44,
+      beds: '2',
+      img: room1,
+      faceImg: face1,
+      userName: 'Krzysztof Kowalski',
+      type: 'townhome',
+      latitude: '51.3912967',
+      longitude: '21.1700084'
     },
   ]
 };
