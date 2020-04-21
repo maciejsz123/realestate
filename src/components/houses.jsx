@@ -65,7 +65,7 @@ class Houses extends Component {
     });
 
     return(
-      <div className='row' style={{margin: '0px 0px'}}>
+      <div className='row list-of-houses'>
         <div className='col-12 text-center color-grey'>
           <FindHouseInfo items={this.props.filteredHouses.length} />
         </div>
