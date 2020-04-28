@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Options from './options';
-import Houses from './houses';
-import HousesMap from './map';
-import '../styles/App.sass'
-import mapIcon from '../imgs/map-icon.png';
-import listIcon from '../imgs/list-icon.png';
+import Options from '../options/options';
+import Houses from '../houses/houses';
+import HousesMap from '../map/map';
+import './frontPage.sass'
+import mapIcon from '../../imgs/map-icon.png';
+import listIcon from '../../imgs/list-icon.png';
 
 class FrontPage extends Component {
   constructor() {
@@ -23,13 +23,13 @@ class FrontPage extends Component {
 
   render() {
     return (
-      <div className='container-fluid' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+      <div className='container-fluid reset-padding'>
         <Options />
-        <div id='dividedView'>
+        <div id='divided-view'>
           <HousesMap />
           <Houses />
         </div>
-        <div id='fullView'>
+        <div id='full-view'>
           {this.state.selectedView === 'map' ? <img src={listIcon} alt='Go to list' onClick={this.changeView.bind(this)} /> : <img src={mapIcon} alt='Go to map' onClick={this.changeView.bind(this)}/>}
           {this.state.selectedView === 'map' ? <HousesMap/> : <Houses />}
         </div>

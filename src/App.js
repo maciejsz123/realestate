@@ -1,5 +1,5 @@
 import React from 'react';
-import FrontPage from './components/frontPage';
+import FrontPage from './components/frontPage/frontPage';
 import { Provider } from 'react-redux';
 import store from './store';
 import './styles/App.sass';

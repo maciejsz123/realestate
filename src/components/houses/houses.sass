@@ -1,0 +1,113 @@
+$color1: #b99379
+$color3: #02313b
+$color4: #f4f4f4
+$color5: #b99379
+$color6: #b99379
+$color7: #f2f2f2
+
+/////////// houses /////////////
+.list-of-houses
+  height: calc(100vh - 45px)
+  margin: 0px
+  overflow: auto
+
+///////// houseItem ///////////
+.house-item > .img-description
+  transition: all 0.5s
+  color: black
+  top: 75%
+
+.img-description
+  text-align: center
+  top: 72%
+  z-index: -1
+  left: 10%
+  width: 80%
+  height: 20%
+  border-radius: 0 0 10px 10px
+  background: $color4
+  color: $color3
+  box-shadow: 3px 3px 3px grey
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: center
+  transition: all 0.5s
+  &>div
+    display: flex
+    align-content: center
+    justify-content: center
+    &>p
+      margin: auto
+
+.face-img
+  grid-row: 1/6
+  align-self: start
+  margin: 20% 0 0 20%
+  width: 4rem
+  height: 4rem
+  border-radius: 50%
+
+.details-hide
+  opacity: 0
+  transition: 0.23s
+
+.image-details
+  top: 0
+  display: grid
+  grid-template-columns: 30% auto
+  grid-template-rows: repeat(4, 20%)
+  align-items: center
+  width: calc(100% - 30px)
+  z-index: 1
+  color: transparent
+  font-size: 0.85rem !important
+  font-family: 'poppins', sans-serif
+  color: white
+  .details-hide
+    transition: 0.23s
+    opacity: 1
+
+.image-details + .background-image
+  background: $color3
+  opacity: 0.85
+
+.background-image
+  top: 0
+  width: calc(100% - 30px)
+  transition: 0.23s
+  &:hover
+    background: black
+    opacity: 0.7
+
+.no-user-selection
+  user-select: none
+
+@media only screen and (min-width: '768px')
+  .house-item > .img-description
+    transition: all 0.5s
+    color: black
+    top: 70%
+
+  .house-item:hover > .img-description
+    transition: all 0.5s
+    color: $color6
+    top: 75%
+
+  .image-details
+    color: transparent
+    .details-hide
+      transition: 0.23s
+      opacity: 0
+    &:hover
+      color: white
+      .detailsHide
+        transition: 0.23s
+        opacity: 1
+
+  .image-details + .background-image
+    background: transparent
+    opacity: 0.85
+
+  .image-details:hover + .background-image
+    background: $color3
+    opacity: 0.85

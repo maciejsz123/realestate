@@ -1,0 +1,26 @@
+.reset-padding
+  padding-left: 0px
+  padding-right: 0px
+
+#divided-view
+  display: none
+
+#full-view
+  display: block
+  & > img
+    position: fixed
+    bottom: 25px
+    left: 25px
+    z-index: 999
+    width: 35px
+    height: 35px
+    cursor: pointer
+
+
+@media only screen and (min-width: '1024px')
+  #full-view
+    display: none
+
+  #divided-view
+    display: grid
+    grid-template-columns: 1fr 1fr

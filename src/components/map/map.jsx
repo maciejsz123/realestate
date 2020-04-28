@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { Map, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import { connect } from 'react-redux';
-import { formatPrice } from './houseItem.jsx';
-import { setVisibleArea, filterHouses } from '../actions/optionsAction.js';
+import { formatPrice } from '../houses/houseItem.jsx';
+import { setVisibleArea, filterHouses } from '../../actions/optionsAction.js';
+import './map.sass';
 
 class HousesMap extends Component {
 
@@ -25,18 +26,18 @@ class HousesMap extends Component {
   render() {
     const position = [52.0694137, 19.4777549]
     const icon = new Icon({
-      iconUrl: require('../imgs/greendot.png'),
+      iconUrl: require('../../imgs/greendot.png'),
       iconSize: [13, 13]
     })
 
     const markers = this.props.filteredHouses.map( (house, i) => (
       <Marker icon={icon} key={i} position={[house.latitude, house.longitude]}>
         <Tooltip>
-          <div style={{display: 'flex'}}>
+          <div className='flex'>
             <div>
-              <img alt={i} src={house.img} style={{width: '75px', height: '75px'}}/>
+              <img alt={i} src={house.img} className='house-img-size'/>
             </div>
-            <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
+            <div className='flex flex-center'>
               <span>{formatPrice(house.price)} zł</span>
               <span>{house.surface} m<sup>2</sup></span>
             </div>
@@ -55,11 +56,11 @@ class HousesMap extends Component {
     const markers2 = hoveredHouse.length > 0 ? (hoveredHouse.map( (item, i) => (
       <Marker icon={icon} key={i} position={[item.latitude, item.longitude]}>
         <Tooltip permanent>
-          <div style={{display: 'flex'}}>
+          <div className='flex'>
             <div>
-              <img alt={i} src={item.img} style={{width: '75px', height: '75px'}}/>
+              <img alt={i} src={item.img} className='house-img-size'/>
             </div>
-            <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
+            <div className='flex flex-center'>
               <span>{formatPrice(item.price)} zł</span>
               <span>{item.surface} m<sup>2</sup></span>
             </div>
@@ -70,7 +71,7 @@ class HousesMap extends Component {
     )) : '';
 
     return(
-      <Map ref='map' onResize={this.mapMove.bind(this)} onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} className='mapSize'>
+      <Map ref='map' onResize={this.mapMove.bind(this)} onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} className='map-size'>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"

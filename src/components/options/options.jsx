@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeOptions, removeValue, filterHouses, changePage } from '../actions/optionsAction';
-import remove from '../imgs/remove.png';
+import { changeOptions, removeValue, filterHouses, changePage } from '../../actions/optionsAction';
+import remove from '../../imgs/remove.png';
 
 class Options extends Component{
 

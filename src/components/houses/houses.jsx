@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import HouseItem from './houseItem';
 import Pagination from './pagination';
 import FindHouseInfo from './findHouseInfo';
-import { changePage, filterHouses } from '../actions/optionsAction';
+import './houses.sass';
+import { changePage, filterHouses } from '../../actions/optionsAction';
 
 class Houses extends Component {
   constructor() {
