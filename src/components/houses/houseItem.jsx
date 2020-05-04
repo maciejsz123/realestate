@@ -28,8 +28,8 @@ function HouseItem(props) {
         <img src={props.faceImg} alt='face' className='face-img details-hide' />
         <span className='no-user-selection details-hide' style={{fontSize: '1rem'}}>{props.userName}</span>
         <span className='no-user-selection details-hide'>{props.city} {props.street}</span>
-        <span className='no-user-selection details-hide'><img src={surface} alt='icon' className='imgIcon'/> {props.surface} m<sup>2</sup></span>
-        <span className='no-user-selection details-hide'><img src={bed} alt='bed' className='imgIcon'/> {props.beds}</span>
+        <span className='no-user-selection details-hide'><img src={surface} alt='icon' className='img-icon'/> {props.surface} m<sup>2</sup></span>
+        <span className='no-user-selection details-hide'><img src={bed} alt='bed' className='img-icon'/> {props.beds}</span>
         <button type='button' className='btn btn-info details-hide p-1' style={{justifySelf: 'start', fontSize: '0.85rem'}}>details</button>
       </div>
       <div className='h-75 position-absolute background-image'>

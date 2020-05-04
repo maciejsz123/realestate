@@ -1,0 +1,48 @@
+$color1: #b99379
+$color3: #02313b
+$color4: #f4f4f4
+$color5: #b99379
+$color6: #b99379
+
+.dropdown-menu
+  width: 100%
+
+.dropdown-button
+  width: 100%
+  background: $color3
+  border-radius: 0 0 3px 3px
+  text-align: center
+  button
+    color: $color3
+    background: $color4
+    &:hover
+      color: $color5
+
+.beds-buttons
+  border: 1px solid grey
+  transition: 0.23s
+  cursor: pointer
+  &:hover
+    background: $color5
+    color: white
+
+.beds-active
+  background: $color6
+  color: white
+
+.beds-buttons:nth-of-type(1)
+  border-radius: 5px 0 0 5px
+
+.beds-buttons:nth-last-of-type(1)
+  border-radius: 0 5px 5px 0
+
+.search-clear
+  position: absolute
+  right: 10px
+  top: 6px
+  cursor: pointer
+  background: white
+  
+@media only screen and (min-width: '768px')
+  .move-left
+    left: calc(-140px + 30%)

@@ -5,18 +5,14 @@ $color5: #b99379
 $color6: #b99379
 $color7: #f2f2f2
 
+$blue6: #4895e8
 /////////// houses /////////////
 .list-of-houses
   height: calc(100vh - 45px)
   margin: 0px
-  overflow: auto
+  overflow: none
 
 ///////// houseItem ///////////
-.house-item > .img-description
-  transition: all 0.5s
-  color: black
-  top: 75%
-
 .img-description
   text-align: center
   top: 72%
@@ -38,6 +34,11 @@ $color7: #f2f2f2
     justify-content: center
     &>p
       margin: auto
+
+.house-item > .img-description
+  transition: all 0.5s
+  color: black
+  top: 75%
 
 .face-img
   grid-row: 1/6
@@ -67,10 +68,6 @@ $color7: #f2f2f2
     transition: 0.23s
     opacity: 1
 
-.image-details + .background-image
-  background: $color3
-  opacity: 0.85
-
 .background-image
   top: 0
   width: calc(100% - 30px)
@@ -79,10 +76,30 @@ $color7: #f2f2f2
     background: black
     opacity: 0.7
 
+.image-details + .background-image
+  background: $color3
+  opacity: 0.85
+
 .no-user-selection
   user-select: none
 
+.actual-page
+  background-color: $blue6
+  color: white
+  &:hover
+    background: $blue6
+    color: white
+
+.img-icon
+  width: 1.3rem
+  height: 1.3rem
+
 @media only screen and (min-width: '768px')
+  ///////// houses /////////////////
+  .list-of-houses
+    overflow: auto
+
+  ///////// houseItem /////////
   .house-item > .img-description
     transition: all 0.5s
     color: black
@@ -100,7 +117,7 @@ $color7: #f2f2f2
       opacity: 0
     &:hover
       color: white
-      .detailsHide
+      .details-hide
         transition: 0.23s
         opacity: 1
 

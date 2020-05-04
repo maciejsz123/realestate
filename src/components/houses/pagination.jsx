@@ -9,7 +9,7 @@ class Pagination extends Component {
     }
     let pages = array.map( (item, i) =>
       <li className='page-item' key={i+1}>
-        <a href='#' onClick={this.props.onPageChange} className={`page-link ${i+1 === Number(this.props.page) ? 'actualPage' : ''}`}>
+        <a href='#' onClick={this.props.onPageChange} className={`page-link ${i+1 === Number(this.props.page) ? 'actual-page' : ''}`}>
           {i+1}
         </a>
       </li>);
