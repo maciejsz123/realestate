@@ -7,6 +7,20 @@ import { setVisibleArea, filterHouses } from '../../actions/optionsAction.js';
 import './map.sass';
 
 class HousesMap extends Component {
+  constructor() {
+    super();
+    this.state = {
+      position: [52.0694137, 19.4777549],
+      blueIcon: new Icon({
+        iconUrl: require('../../imgs/bluedot.png'),
+        iconSize: [13, 13]
+      }),
+      greenIcon: new Icon({
+        iconUrl: require('../../imgs/greendot.png'),
+        iconSize: [13, 13]
+      })
+    }
+  }
 
   componentDidMount() {
     if(this.refs.map.leafletElement.getBounds()._northEast.lat !== this.refs.map.leafletElement.getBounds()._southWest.lat &&
@@ -24,14 +38,8 @@ class HousesMap extends Component {
   }
 
   render() {
-    const position = [52.0694137, 19.4777549]
-    const icon = new Icon({
-      iconUrl: require('../../imgs/greendot.png'),
-      iconSize: [13, 13]
-    })
-
     const markers = this.props.filteredHouses.map( (house, i) => (
-      <Marker icon={icon} key={i} position={[house.latitude, house.longitude]}>
+      <Marker icon={house.paymentType === 'for sale' ? this.state.greenIcon : this.state.blueIcon} key={i} position={[house.latitude, house.longitude]}>
         <Tooltip>
           <div className='flex'>
             <div>
@@ -54,7 +62,7 @@ class HousesMap extends Component {
     })
 
     const markers2 = hoveredHouse.length > 0 ? (hoveredHouse.map( (item, i) => (
-      <Marker icon={icon} key={i} position={[item.latitude, item.longitude]}>
+      <Marker icon={item.paymentType === 'for sale' ? this.state.greenIcon : this.state.blueIcon} key={i} position={[item.latitude, item.longitude]}>
         <Tooltip permanent>
           <div className='flex'>
             <div>
@@ -71,7 +79,7 @@ class HousesMap extends Component {
     )) : '';
 
     return(
-      <Map ref='map' onResize={this.mapMove.bind(this)} onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={position} zoom={6} className='map-size'>
+      <Map ref='map' onResize={this.mapMove.bind(this)} onZoomEnd={this.mapMove.bind(this)} onMoveEnd={this.mapMove.bind(this)} center={this.state.position} zoom={6} className='map-size'>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"
@@ -99,7 +107,8 @@ const mapStateToProps = (state) => {
     actualPage: state.houses.actualPage,
     filteredHouses: state.houses.filteredHouses,
     northEast: state.houses.northEast,
-    southWest: state.houses.southWest
+    southWest: state.houses.southWest,
+    paymentType: state.houses.paymentType
   }
 };
 

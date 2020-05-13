@@ -37,7 +37,7 @@ class Options extends Component{
       });
       e.target.parentNode.classList.add('beds-active');
       this.props.changeOptions(e);
-    } else if (e.target.name === 'homeType' || e.target.name === 'city'){
+    } else if (e.target.name === 'homeType' || e.target.name === 'city' || e.target.name === 'paymentType'){
       this.props.changeOptions(e);
     }
     await this.props.changePage(1);
@@ -62,6 +62,16 @@ class Options extends Component{
   changeTitle(id) {
     let element = document.getElementById(id);
     switch(id) {
+      case 'paymentType':
+        let paymentItems = this.props.paymentType.filter( item => item.checked);
+        let paymentText = paymentItems.map( i => i.value);
+        if(this.props.paymentType.length === paymentItems.length) {
+          element.innerHTML = 'buy/rent';
+        } else if(paymentItems.length === 0) {
+          element.innerHTML = 'check at least one';
+        } else {
+          element.innerHTML = String(paymentText);
+        } break;
       case 'price':
         this.titleDetail(element, this.props.priceFrom, this.props.priceTo, ' zł', 'price')
         break;
@@ -121,6 +131,15 @@ class Options extends Component{
       </div>
     );
 
+    let paymentType = this.props.paymentType.map( (type, i) =>
+      <div className='p-2' key={i}>
+        <label>
+          <input name='paymentType' type='checkbox' checked={type.checked} value={type.value} onChange={this.onChange.bind(this)} />
+          {type.value}
+        </label>
+      </div>
+    );
+
     return(
       <div className='navbar navbar-expand-md'>
           <ul className="nav navbar-nav w-100 nav-justified">
@@ -128,6 +147,22 @@ class Options extends Component{
               <div className='btn-group'>
                 <input style={{paddingRight: '25px'}} type='text' maxLength='25' placeholder='city' name="city" value={this.props.city} onChange={this.onChange.bind(this)}/>
                 <img src={remove} style={{right: '6px'}} alt='X' className='search-clear' name='city' onClick={this.onRemove.bind(this)}/>
+              </div>
+            </li>
+            <li className='nav-item'>
+              <div className="dropdown">
+                <a className="dropdown-toggle" data-toggle="dropdown" href="/1" id='paymentType'>buy/rent
+                <span className="caret"></span></a>
+                <div className="dropdown-menu prevent-close position-absolute pb-0 text-center" style={{minWidth: '250px'}}>
+                  <div className='container'>
+                    <div className='flex-d flex-row-reverse'>
+                      {paymentType}
+                    </div>
+                  </div>
+                  <div className='col-12 mt-2 dropdown-button'>
+                    <button type='button' name='paymentType' className='btn m-2 pl-5 pr-5' onClick={this.onAccept.bind(this)}>ok</button>
+                  </div>
+                </div>
               </div>
             </li>
             <li className='nav-item'>
@@ -226,7 +261,8 @@ const mapStateToProps = (state) => {
     homeType: state.houses.homeType,
     houses: state.houses.houses,
     northEast: state.houses.northEast,
-    southWest: state.houses.southWest
+    southWest: state.houses.southWest,
+    paymentType: state.houses.paymentType
   }
 }
 

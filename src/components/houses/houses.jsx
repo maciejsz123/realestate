@@ -103,7 +103,8 @@ const mapStateToProps = (state) => {
     actualPage: state.houses.actualPage,
     filteredHouses: state.houses.filteredHouses,
     northEast: state.houses.northEast,
-    southWest: state.houses.southWest
+    southWest: state.houses.southWest,
+    paymentType: state.houses.paymentType
   }
 };
 

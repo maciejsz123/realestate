@@ -1,4 +1,4 @@
-import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE, SET_VISIBLE_AREA } from '../actions/types';
+import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE, SET_VISIBLE_AREA, CHOOSE_PAYMENT } from '../actions/types';
 import room1 from '../imgs/room1.jpg';
 import room2 from '../imgs/room2.jpg';
 import room3 from '../imgs/room3.jpg';
@@ -15,6 +15,10 @@ const initialState = {
   surfaceFrom: '',
   surfaceTo: '',
   beds: '',
+  paymentType: [
+    {value: 'for sale', checked: true},
+    {value: 'for rent', checked: true}
+  ],
   hoveredTooltip: [],
   filteredHouses: [],
   northEast: {lat: 180, lng: 180},
@@ -40,7 +44,8 @@ const initialState = {
       userName: 'Ewa Kowalska',
       type: 'house',
       latitude: '52.2330653',
-      longitude: '20.9211107'
+      longitude: '20.9211107',
+      paymentType: 'for sale'
     }, {
       id: 2,
       city: 'Wrocław',
@@ -53,7 +58,8 @@ const initialState = {
       userName: 'Ewa Nowak',
       type: 'manufactured',
       latitude: '51.105385',
-      longitude: '17.0367105'
+      longitude: '17.0367105',
+      paymentType: 'for sale'
     }, {
       id: 3,
       city: 'Poznań',
@@ -66,7 +72,8 @@ const initialState = {
       userName: 'Jan Kowalski',
       type: 'multi-family',
       latitude: '52.405704',
-      longitude: '16.9307877'
+      longitude: '16.9307877',
+      paymentType: 'for sale'
     }, {
       id: 4,
       city: 'Kraków',
@@ -79,7 +86,8 @@ const initialState = {
       userName: 'Monika Nowak',
       type: 'apartment',
       latitude: '50.0641377',
-      longitude: '19.9342954'
+      longitude: '19.9342954',
+      paymentType: 'for sale'
     }, {
       id: 5,
       city: 'Kraków',
@@ -92,7 +100,8 @@ const initialState = {
       userName: 'Monika Nowak',
       type: 'townhome',
       latitude: '50.0611732',
-      longitude: '19.9335751'
+      longitude: '19.9335751',
+      paymentType: 'for sale'
     }, {
       id: 6,
       city: 'Poznań',
@@ -105,7 +114,8 @@ const initialState = {
       userName: 'Pawel Nowak',
       type: 'multi-family',
       latitude: '52.4081478',
-      longitude: '16.9314839'
+      longitude: '16.9314839',
+      paymentType: 'for sale'
     }, {
       id: 7,
       city: 'Wrocław',
@@ -118,7 +128,8 @@ const initialState = {
       userName: 'Jan Kowalski',
       type: 'apartment',
       latitude: '51.1105238',
-      longitude: '17.028247'
+      longitude: '17.028247',
+      paymentType: 'for sale'
     }, {
       id: 8,
       city: 'Warszawa',
@@ -131,7 +142,8 @@ const initialState = {
       userName: 'Monika Wójcik',
       type: 'apartment',
       latitude: '52.2497446',
-      longitude: '21.010053'
+      longitude: '21.010053',
+      paymentType: 'for sale'
     }, {
       id: 9,
       city: 'Wrocław',
@@ -144,7 +156,8 @@ const initialState = {
       userName: 'Ewa Nowak',
       type: 'apartment',
       latitude: '51.1451689',
-      longitude: '16.9313011'
+      longitude: '16.9313011',
+      paymentType: 'for sale'
     }, {
       id: 10,
       city: 'Kraków',
@@ -157,7 +170,8 @@ const initialState = {
       userName: 'Jan Nowak',
       type: 'multi-family',
       latitude: '50.044654',
-      longitude: '19.9456087'
+      longitude: '19.9456087',
+      paymentType: 'for sale'
     }, {
       id: 11,
       city: 'Gdańsk',
@@ -170,7 +184,8 @@ const initialState = {
       userName: 'Krzysztof Nowak',
       type: 'manufactured',
       latitude: '54.3552534',
-      longitude: '18.4919756'
+      longitude: '18.4919756',
+      paymentType: 'for sale'
     }, {
       id: 12,
       city: 'Łódź',
@@ -183,7 +198,8 @@ const initialState = {
       userName: 'Krzysztof Kowalski',
       type: 'manufactured',
       latitude: '51.7430138',
-      longitude: '19.480958'
+      longitude: '19.480958',
+      paymentType: 'for sale'
     }, {
       id: 13,
       city: 'Radom',
@@ -196,7 +212,106 @@ const initialState = {
       userName: 'Krzysztof Kowalski',
       type: 'townhome',
       latitude: '51.3912967',
-      longitude: '21.1700084'
+      longitude: '21.1700084',
+      paymentType: 'for sale'
+    }, {
+      id: 14,
+      city: 'Szczecin',
+      street: 'Piotrowska 38',
+      price: 1500,
+      surface: 44,
+      beds: '2',
+      img: room1,
+      faceImg: face1,
+      userName: 'Krzysztof Kowalski',
+      type: 'townhome',
+      latitude: '53.41918',
+      longitude: '14.483137',
+      paymentType: 'for rent'
+    }, {
+      id: 15,
+      city: 'Wrocław',
+      street: 'Nowa 38',
+      price: 1800,
+      surface: 44,
+      beds: '2',
+      img: room2,
+      faceImg: face2,
+      userName: 'Marcin Marcinowski',
+      type: 'manufactured',
+      latitude: '51.1056718',
+      longitude: '17.0394426',
+      paymentType: 'for rent'
+    }, {
+      id: 16,
+      city: 'Radom',
+      street: 'Rynek 38',
+      price: 1200,
+      surface: 34,
+      beds: 'studio',
+      img: room3,
+      faceImg: face3,
+      userName: 'Ewa Nowakowska',
+      type: 'apartment',
+      latitude: '51.4029997',
+      longitude: '21.1432545',
+      paymentType: 'for rent'
+    }, {
+      id: 17,
+      city: 'Łódź',
+      street: 'Kościuszki 2',
+      price: 1400,
+      surface: 37,
+      beds: '2',
+      img: room1,
+      faceImg: face2,
+      userName: 'Andrzej Nowak',
+      type: 'townhome',
+      latitude: '51.7626815',
+      longitude: '19.4535208',
+      paymentType: 'for rent'
+    }, {
+      id: 18,
+      city: 'Warszawa',
+      street: 'Nowa 2',
+      price: 2500,
+      surface: 44,
+      beds: '3',
+      img: room3,
+      faceImg: face3,
+      userName: 'Andrzej Kowalski',
+      type: 'manufactured',
+      latitude: '52.244139',
+      longitude: '21.1845993',
+      paymentType: 'for rent'
+    }, {
+      id: 19,
+      city: 'Poznań',
+      street: 'Rynek 33',
+      price: 2200,
+      surface: 42,
+      beds: '2',
+      img: room1,
+      faceImg: face1,
+      userName: 'Robert Kowalski',
+      type: 'townhome',
+      latitude: '52.4105838',
+      longitude: '16.9084528',
+      paymentType: 'for rent'
+    }, {
+      id: 20,
+      city: 'Gdańsk',
+      street: 'Podbielańska 2',
+      price: 2000,
+      surface: 38,
+      beds: 'studio',
+      img: room2,
+      faceImg: face2,
+      userName: 'Adam Nowak',
+      type: 'apartment',
+      latitude: '54.3552398',
+      longitude: '18.6470108',
+      paymentType: 'for rent'
     },
   ]
 };
@@ -205,6 +320,19 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case OPTIONS_CHANGE:
       return {...state, [action.payload.name]: action.payload.value}
+
+    case CHOOSE_PAYMENT:
+      let updatedPaymentType = state.paymentType.map( item => {
+        if(item.value === action.value) {
+          return {
+            value: action.value,
+            checked: action.checked
+          }
+        } else {
+          return item;
+        }
+      });
+      return {...state, paymentType: updatedPaymentType};
 
     case HOME_TYPE_CHANGE:
       let updatedType = state.homeType.map( item => {

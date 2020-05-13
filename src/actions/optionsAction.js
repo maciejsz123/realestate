@@ -1,10 +1,16 @@
-import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE, SET_VISIBLE_AREA } from './types';
+import { OPTIONS_CHANGE, HOME_TYPE_CHANGE, REMOVE_VALUE, MOUSEOVER_TOOLTIP_MAP, FILTER_HOUSES, CHANGE_PAGE, SET_VISIBLE_AREA, CHOOSE_PAYMENT } from './types';
 
 export function changeOptions(e) {
   return function(dispatch) {
     if(e.target.name === 'homeType') {
       dispatch({
         type: HOME_TYPE_CHANGE,
+        value: e.target.value,
+        checked: e.target.checked
+      });
+    } else if(e.target.name === 'paymentType') {
+      dispatch({
+        type: CHOOSE_PAYMENT,
         value: e.target.value,
         checked: e.target.checked
       });
@@ -34,6 +40,9 @@ export function filterHouses(props) {
   let types = props.homeType.filter( item => item.checked);
   let typesValues = types.map( i => i.value);
 
+  let types2 = props.paymentType.filter( item => item.checked);
+  let paymentValues = types2.map( i => i.value);
+
   const filtered = props.houses.filter( (house, i) => {
     return (house.city.toLowerCase().includes(props.city.toLowerCase()) &&
       house.price > priceFrom &&
@@ -41,7 +50,8 @@ export function filterHouses(props) {
       house.surface > surfaceFrom &&
       house.surface < surfaceTo &&
       (!props.beds || house.beds === props.beds) &&
-      typesValues.includes(house.type)) &&
+      typesValues.includes(house.type) &&
+      paymentValues.includes(house.paymentType)) &&
       (props.northEast.lng > house.longitude && props.southWest.lng < house.longitude) &&
       (props.northEast.lat > house.latitude && props.southWest.lat < house.latitude)
   });

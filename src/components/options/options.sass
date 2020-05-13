@@ -4,6 +4,12 @@ $color4: #f4f4f4
 $color5: #b99379
 $color6: #b99379
 
+.dropdown-toggle::after
+  transition: 0.3s all
+
+.show .dropdown-toggle::after
+  transform: rotate(180deg)
+
 .dropdown-menu
   width: 100%
 
@@ -42,7 +48,7 @@ $color6: #b99379
   top: 6px
   cursor: pointer
   background: white
-  
+
 @media only screen and (min-width: '768px')
   .move-left
     left: calc(-140px + 30%)
