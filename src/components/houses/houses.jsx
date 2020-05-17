@@ -61,6 +61,7 @@ class Houses extends Component {
           faceImg={house.faceImg}
           latitude={house.latitude}
           longitude={house.longitude}
+          paymentType={house.paymentType}
         />;
       }
     });

@@ -13,75 +13,57 @@ $blue6: #4895e8
   overflow: none
 
 ///////// houseItem ///////////
-.img-description
-  text-align: center
-  top: 72%
-  z-index: -1
-  left: 10%
-  width: 80%
-  height: 20%
-  border-radius: 0 0 10px 10px
-  background: $color4
-  color: $color3
-  box-shadow: 3px 3px 3px grey
-  display: grid
-  grid-template-columns: 1fr 1fr
-  align-items: center
-  transition: all 0.5s
-  &>div
-    display: flex
-    align-content: center
-    justify-content: center
-    &>p
-      margin: auto
+.h-90
+  height: 90%
 
-.house-item > .img-description
-  transition: all 0.5s
-  color: black
-  top: 75%
+.top-0
+  top: 0
+
+.bg-yellow
+  background-color: #DEB887
+  padding: 0px 5px
+  margin: 5px
+
+.border-radius-10
+  border-radius: 10px
 
 .face-img
-  grid-row: 1/6
-  align-self: start
-  margin: 20% 0 0 20%
-  width: 4rem
-  height: 4rem
+  width: 2.5rem
+  height: 2.5rem
   border-radius: 50%
-
-.details-hide
-  opacity: 0
-  transition: 0.23s
-
-.image-details
-  top: 0
-  display: grid
-  grid-template-columns: 30% auto
-  grid-template-rows: repeat(4, 20%)
-  align-items: center
-  width: calc(100% - 30px)
-  z-index: 1
-  color: transparent
-  font-size: 0.85rem !important
-  font-family: 'poppins', sans-serif
-  color: white
-  .details-hide
-    transition: 0.23s
-    opacity: 1
-
-.background-image
-  top: 0
-  width: calc(100% - 30px)
-  transition: 0.23s
-  &:hover
-    background: black
-    opacity: 0.7
-
-.image-details + .background-image
-  background: $color3
-  opacity: 0.85
 
 .no-user-selection
   user-select: none
+
+.text-10
+  font-size: 11px
+
+#house-details
+  width: 100%
+  z-index: 2
+  display: grid
+  grid-template-areas: 'house-username house-username' 'house-address house-price' 'house-beds house-surface'
+  font-size: 14px
+  align-items: center
+  *
+    margin: 0 5px
+  #house-username
+    grid-area: house-username
+  #house-address
+    grid-area: house-address
+  #house-surface
+    grid-area: house-surface
+  #house-beds
+    grid-area: house-beds
+  #house-price
+    grid-area: house-price
+
+#black-layer-bottom
+  background: linear-gradient(transparent 0%, transparent 40%, black 90%)
+  opacity: 0.45
+  z-index: 1
+  width: calc(100% - 30px)
+  height: 90%
 
 .actual-page
   background-color: $blue6
@@ -100,31 +82,3 @@ $blue6: #4895e8
     overflow: auto
 
   ///////// houseItem /////////
-  .house-item > .img-description
-    transition: all 0.5s
-    color: black
-    top: 70%
-
-  .house-item:hover > .img-description
-    transition: all 0.5s
-    color: $color6
-    top: 75%
-
-  .image-details
-    color: transparent
-    .details-hide
-      transition: 0.23s
-      opacity: 0
-    &:hover
-      color: white
-      .details-hide
-        transition: 0.23s
-        opacity: 1
-
-  .image-details + .background-image
-    background: transparent
-    opacity: 0.85
-
-  .image-details:hover + .background-image
-    background: $color3
-    opacity: 0.85

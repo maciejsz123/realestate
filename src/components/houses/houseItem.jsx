@@ -22,21 +22,24 @@ export function formatPrice(value) {
 
 function HouseItem(props) {
   return(
-    <div className='col-md-6 position-relative house-item' onMouseEnter={(e) => props.mouseOverTooltipData(e, props.latitude, props.longitude)} onMouseLeave={(e) => props.mouseOverTooltipData(e)}>
-      <img src={props.image} alt={props.city} className='w-100 h-75'/>
-      <div className='h-75 position-absolute image-details'>
-        <img src={props.faceImg} alt='face' className='face-img details-hide' />
-        <span className='no-user-selection details-hide' style={{fontSize: '1rem'}}>{props.userName}</span>
-        <span className='no-user-selection details-hide'>{props.city} {props.street}</span>
-        <span className='no-user-selection details-hide'><img src={surface} alt='icon' className='img-icon'/> {props.surface} m<sup>2</sup></span>
-        <span className='no-user-selection details-hide'><img src={bed} alt='bed' className='img-icon'/> {props.beds}</span>
-        <button type='button' className='btn btn-info details-hide p-1' style={{justifySelf: 'start', fontSize: '0.85rem'}}>details</button>
+    <div className='col-md-6 position-relative' onMouseEnter={(e) => props.mouseOverTooltipData(e, props.latitude, props.longitude)} onMouseLeave={(e) => props.mouseOverTooltipData(e)}>
+      <img src={props.image} alt={props.city} className='w-100 h-90 border-radius-10'/>
+      <div className='position-absolute top-0 h-90 d-flex flex-column' style={{justifyContent: 'space-between', width: '90%'}}>
+        <div>
+          <span className='bg-yellow text-white no-user-selection text-10'>{props.paymentType.toUpperCase()}</span>
+        </div>
+        <div id='house-details'>
+          <div id='house-username'>
+            <img src={props.faceImg} alt='face' className='face-img no-user-selection' />
+            <span className='no-user-selection text-white'>{props.userName}</span>
+          </div>
+          <span id='house-address' className='no-user-selection text-white'>{props.city} {props.street}</span>
+          <span id='house-surface' className='no-user-selection text-white'><img src={surface} alt='icon' className='img-icon'/> {props.surface} m<sup>2</sup></span>
+          <span id='house-beds' className='no-user-selection text-white'><img src={bed} alt='bed' className='img-icon'/> {props.beds}</span>
+          <span id='house-price' className='no-user-selection text-white'>{formatPrice(props.price)} zł</span>
+        </div>
       </div>
-      <div className='h-75 position-absolute background-image'>
-      </div>
-      <div className='position-absolute img-description'>
-        <div><p>{props.city}</p></div>
-        <div><p>{formatPrice(props.price)} zł</p></div>
+      <div id='black-layer-bottom' className='position-absolute top-0 border-radius-10'>
       </div>
     </div>
   )
