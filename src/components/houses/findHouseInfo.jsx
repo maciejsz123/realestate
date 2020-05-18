@@ -3,7 +3,7 @@ import React from 'react';
 function FindHouseInfo(props) {
   if(props.items) {
     return(
-      <div style={{color: 'grey'}}>found {props.items} items</div>
+      <div><b>{props.items}</b> Results Found</div>
     )
   } else {
     return(

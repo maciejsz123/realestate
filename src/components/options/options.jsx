@@ -173,11 +173,11 @@ class Options extends Component{
                   <div className='container'>
                     <div className='row'>
                       <div className='col-6 pr-1 pl-1'>
-                        <input style={{width: '100%', paddingRight: '20px'}} placeholder='from' name='priceFrom' value={this.props.priceFrom} onKeyPress={(e) => {this.handleKeyPress(e, 'price')}} onChange={this.onChange.bind(this)} />
+                        <input type='text' style={{width: '100%', paddingRight: '20px'}} placeholder='from' name='priceFrom' value={this.props.priceFrom} onKeyPress={(e) => {this.handleKeyPress(e, 'price')}} onChange={this.onChange.bind(this)} />
                         <img src={remove} alt='X' className='search-clear' name='priceFrom' onClick={(e) => {this.onRemove(e, 'price')}}/>
                       </div>
                       <div className='col-6 pr-1 pl-1'>
-                        <input style={{width: '100%', paddingRight: '20px'}} placeholder='to' name='priceTo' value={this.props.priceTo} onKeyPress={(e) => {this.handleKeyPress(e, 'price')}} onChange={this.onChange.bind(this)} />
+                        <input type='text' style={{width: '100%', paddingRight: '20px'}} placeholder='to' name='priceTo' value={this.props.priceTo} onKeyPress={(e) => {this.handleKeyPress(e, 'price')}} onChange={this.onChange.bind(this)} />
                         <img src={remove} alt='X' className='search-clear' name='priceTo' onClick={(e) => {this.onRemove(e, 'price')}}/>
                       </div>
                     </div>
@@ -196,11 +196,11 @@ class Options extends Component{
                   <div className='container'>
                     <div className='row'>
                       <div className='col-6 pr-1 pl-1'>
-                        <input style={{width: '100%', paddingRight: '20px'}} placeholder='from' name='surfaceFrom' value={this.props.surfaceFrom} onKeyPress={(e) => {this.handleKeyPress(e, 'surface')}} onChange={this.onChange.bind(this)} />
+                        <input type='text' style={{width: '100%', paddingRight: '20px'}} placeholder='from' name='surfaceFrom' value={this.props.surfaceFrom} onKeyPress={(e) => {this.handleKeyPress(e, 'surface')}} onChange={this.onChange.bind(this)} />
                         <img src={remove} alt='X' className='search-clear' name='surfaceFrom' onClick={(e) => {this.onRemove(e, 'surface')}}/>
                       </div>
                       <div className='col-6 pr-1 pl-1'>
-                        <input style={{width: '100%', paddingRight: '20px'}} placeholder='to' name='surfaceTo' value={this.props.surfaceTo} onKeyPress={(e) => {this.handleKeyPress(e, 'surface')}} onChange={this.onChange.bind(this)} />
+                        <input type='text' style={{width: '100%', paddingRight: '20px'}} placeholder='to' name='surfaceTo' value={this.props.surfaceTo} onKeyPress={(e) => {this.handleKeyPress(e, 'surface')}} onChange={this.onChange.bind(this)} />
                         <img src={remove} alt='X' className='search-clear' name='surfaceTo' onClick={(e) => {this.onRemove(e, 'surface')}}/>
                       </div>
                     </div>

@@ -8,7 +8,7 @@ $color7: #f2f2f2
 $blue6: #4895e8
 /////////// houses /////////////
 .list-of-houses
-  height: calc(100vh - 45px)
+  height: calc(100vh - 46px)
   margin: 0px
   overflow: none
 
@@ -42,13 +42,14 @@ $blue6: #4895e8
   width: 100%
   z-index: 2
   display: grid
-  grid-template-areas: 'house-username house-username' 'house-address house-price' 'house-beds house-surface'
-  font-size: 14px
+  grid-template-areas: 'house-username house-username house-price' 'house-address house-beds house-surface'
+  font-size: 12px
   align-items: center
   *
     margin: 0 5px
   #house-username
     grid-area: house-username
+    font-size: 14px
   #house-address
     grid-area: house-address
   #house-surface
@@ -57,6 +58,7 @@ $blue6: #4895e8
     grid-area: house-beds
   #house-price
     grid-area: house-price
+    font-size: 14px
 
 #black-layer-bottom
   background: linear-gradient(transparent 0%, transparent 40%, black 90%)

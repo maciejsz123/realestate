@@ -31,12 +31,12 @@ function HouseItem(props) {
         <div id='house-details'>
           <div id='house-username'>
             <img src={props.faceImg} alt='face' className='face-img no-user-selection' />
-            <span className='no-user-selection text-white'>{props.userName}</span>
+            <span className='no-user-selection text-white font-weight-bolder'>{props.userName}</span>
           </div>
           <span id='house-address' className='no-user-selection text-white'>{props.city} {props.street}</span>
           <span id='house-surface' className='no-user-selection text-white'><img src={surface} alt='icon' className='img-icon'/> {props.surface} m<sup>2</sup></span>
           <span id='house-beds' className='no-user-selection text-white'><img src={bed} alt='bed' className='img-icon'/> {props.beds}</span>
-          <span id='house-price' className='no-user-selection text-white'>{formatPrice(props.price)} zł</span>
+          <span id='house-price' className='no-user-selection text-white font-weight-bolder'>{formatPrice(props.price)} zł</span>
         </div>
       </div>
       <div id='black-layer-bottom' className='position-absolute top-0 border-radius-10'>
